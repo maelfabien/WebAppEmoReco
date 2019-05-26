@@ -6,6 +6,7 @@ opencv-python
 argparse
 scipy
 dlib
+cmake
 tensorflow
 imutils
 tika
