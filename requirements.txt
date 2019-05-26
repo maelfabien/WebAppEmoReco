@@ -17,5 +17,6 @@ gensim
 seaborn
 scikit-learn
 dill
+keras
 
 
