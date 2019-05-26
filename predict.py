@@ -44,11 +44,11 @@ from keras.layers import Dense, LSTM, SpatialDropout1D, Activation, Conv1D, MaxP
 from keras.utils.np_utils import to_categorical
 from keras import backend as K
 
+nltk.download()
+
 # Do some code, e.g. train and save model
 
 class predict:
-
-    nltk.download()
     
     def __init__(self):
         self.max_sentence_len = 300
