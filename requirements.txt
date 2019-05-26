@@ -11,8 +11,6 @@ dlib
 tensorflow
 imutils
 tika
-pyaudio
-librosa
 wave
 nltk
 gensim
