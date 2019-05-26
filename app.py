@@ -17,7 +17,6 @@ import argparse
 from collections import OrderedDict
 
 ### Audio Library ###
-from speechEmotionRecognition import *
 
 ### Image processing ###
 from scipy.ndimage import zoom
@@ -217,38 +216,6 @@ def text_pdf():
     os.remove(f.filename)
     #flash('Your dominant personality trait is : {}'.format(str(trait)))
     return render_template('result.html', traits = data_traits, trait = trait, num_words = num_words, common_words = common_words)
-
-
-@app.route('/audio', methods=['POST'])
-def audio() :
-
-    # Sub dir to speech emotion recognition model
-    model_sub_dir = os.path.join('Models', 'audio.hdf5')
-
-    # Instanciate new SpeechEmotionRecognition object
-    SER = speechEmotionRecognition(model_sub_dir)
-
-    # Voice Recording
-    rec_duration = 10 # in sec
-    rec_sub_dir = os.path.join('tmp', 'voice_recording.wav')
-    SER.voice_recording(rec_sub_dir, duration=rec_duration)
-
-    # Predict emotion in voice at each time step
-    step = 1 # in sec
-    sample_rate = 16000 # in kHz
-    emotions, timestamp = SER.predict_emotion_from_file(rec_sub_dir, chunk_step=step*sample_rate)
-
-    # Add results to flask session
-    session['speech_emotions'] = emotions
-    session['speech_timestamp'] = timestamp
-    
-    # Print results
-    print('\nPredicted emotions:')
-    print(emotions)
-    print('\nPrediction time stamp:')
-    print(timestamp)
-
-    return redirect('/')
 
 
 @app.route('/rules')
