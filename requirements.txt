@@ -3,10 +3,10 @@ Werkzeug
 numpy
 pandas
 opencv-python
+cmake
 argparse
 scipy
 dlib
-cmake
 tensorflow
 imutils
 tika
