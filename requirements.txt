@@ -3,7 +3,6 @@ Werkzeug
 numpy
 pandas
 opencv-python
-re
 argparse
 collections
 scipy
