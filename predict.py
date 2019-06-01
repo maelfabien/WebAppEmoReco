@@ -7,6 +7,7 @@ import re
 import datetime
 from operator import itemgetter
 from random import randint
+import seaborn as sns
 
 import os
 import time
@@ -14,8 +15,8 @@ import string
 import dill
 import pickle
 
-import nltk
 from nltk import *
+
 from nltk import wordpunct_tokenize, WordNetLemmatizer, sent_tokenize, pos_tag
 from nltk.corpus import stopwords as sw, wordnet as wn
 from nltk.stem.snowball import SnowballStemmer
@@ -43,8 +44,6 @@ from keras.layers.embeddings import Embedding
 from keras.layers import Dense, LSTM, SpatialDropout1D, Activation, Conv1D, MaxPooling1D, Input, concatenate
 from keras.utils.np_utils import to_categorical
 from keras import backend as K
-
-nltk.download()
 
 # Do some code, e.g. train and save model
 
@@ -210,7 +209,8 @@ class predict:
         classifier.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
         json_file.close()
         model = build(self.MyRNNTransformer(classifier))
-        y_pred = model.transform(X)
+        y_pred = model.transform([X])
         
         K.clear_session()
+        
         return y_pred
