@@ -27,6 +27,8 @@ from tika import parser
 from werkzeug.utils import secure_filename
 import tempfile
 
+nltk.download('stopwords')
+
 
 # Flask config
 app = Flask(__name__)
